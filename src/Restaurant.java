@@ -92,7 +92,7 @@ public class Restaurant implements ActionListener {
 
         for (int i=1;i< reservations.size();i++) {
             int j = i;
-            while (j>0 && reservations.get(j).getTimeMade() < reservations.get(j).getTimeMade()) {
+            while (j>0 && reservations.get(j).getTimeMade() < reservations.get(j-1).getTimeMade()) {
                 Reservation temp = reservations.get(j - 1);
                 reservations.set(j-1,reservations.get(j));
                 reservations.set(j, temp);
@@ -137,7 +137,7 @@ public class Restaurant implements ActionListener {
 
         textarea = new JTextArea();
         {
-            for (int i = 1; i < 6; i++) {
+            for (int i = 0; i < 6; i++) {
                 // textarea.setText(textarea.getText() + Reservation.get(printInfo));
                 textarea.setText(textarea.getText() + "Reservation for " + reservations.get(i).getNPeople() + ", made at " + reservations.get(i).getTimeMadeString() + ", for " + reservations.get(i).getTimeForString() + "\n");
             }
@@ -198,7 +198,7 @@ public class Restaurant implements ActionListener {
             textarea.setText("");
             System.out.println("Sorting by # of people");
             sortByNPeople();
-            for (int i = 1; i < 6; i++) {
+            for (int i = 0; i < 6; i++) {
                 textarea.setText(textarea.getText() + "Reservation for " + reservations.get(i).getNPeople() + ", made at " + reservations.get(i).getTimeMadeString() + ", for " + reservations.get(i).getTimeForString() + "\n");
             }
 
@@ -207,7 +207,7 @@ public class Restaurant implements ActionListener {
             textarea.setText("");
             System.out.println("Sorting by time made");
             sortByTimeMade();
-            for (int i = 1; i < 6; i++) {
+            for (int i = 0; i < 6; i++) {
                 textarea.setText(textarea.getText() + "Reservation for " + reservations.get(i).getNPeople() + ", made at " + reservations.get(i).getTimeMadeString() + ", for " + reservations.get(i).getTimeForString() + "\n");
             }
         }
@@ -215,7 +215,7 @@ public class Restaurant implements ActionListener {
                 textarea.setText("");
                 System.out.println("Sorting by time for");
                 sortByTimeFor();
-                for (int i = 1; i < 6; i++) {
+                for (int i = 0; i < 6; i++) {
                     textarea.setText(textarea.getText() + "Reservation for " + reservations.get(i).getNPeople() + ", made at " + reservations.get(i).getTimeMadeString() + ", for " + reservations.get(i).getTimeForString() + "\n");
                 }
 
